@@ -1,6 +1,6 @@
 /// Set the date we're counting down to
 const now = new Date();
-var countDownDate =  new Date(now.getFullYear() + 1, 0, 1);
+var countDownDate = new Date(now.getFullYear() + 1, 0, 1);
 
 // jquery listener for viewing video panel and dragging it
 $(".video-panel").draggable();
@@ -9,8 +9,7 @@ $('.video-panel-btn').on('click', function(){
 })
 
 // Update the countdown every 1 second
-var countdownInterval = setInterval(function() {
-
+function countdown() {
     // Get the current date and time
     var now = new Date().getTime();
 
@@ -30,11 +29,10 @@ var countdownInterval = setInterval(function() {
     document.getElementById("seconds").innerHTML = seconds + "s";
 
     // Pick up the timeZone
-    const timezoneName = now.toLocaleString('en-US', { timeZoneName: 'short' });
+    const timezoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    const timezoneElement = document.getElementById('timezone');
+    const timezoneElement = document.getElementById("timezone");
     timezoneElement.textContent = `Time zone: ${timezoneName}`;
-    
 
     // If the countdown is over, display a message
     if (distance < 0) {
@@ -44,4 +42,8 @@ var countdownInterval = setInterval(function() {
         document.getElementById("minutes").innerHTML = "";
         document.getElementById("seconds").innerHTML = "";
     }
-}, 1000);
+}
+
+// Call the countdown function immediately, then set the interval
+countdown();
+var countdownInterval = setInterval(countdown, 1000);
