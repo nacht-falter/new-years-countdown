@@ -1,11 +1,13 @@
 <h1 align="center"><strong> :santa: :christmas_tree: SECRET SANTA: A HOLIDAY HACKATHON :christmas_tree: :santa:</strong></h1>
 
-<h1 align="center"><strong> :clinking_glasses: New Year's Countdown :clinking_glasses: </strong></h1>
+<h1 align="center"><strong>New Year's Countdown</strong></h1>
 
 ## **Intro**
 Welcome to ***New Year's Countdown*** -  your go-to destination for ringing in the new year with style and excitement! As the clock ticks down to midnight, join us on a virtual journey filled with anticipation, joy, and the thrill of a fresh start. Our app is designed to make your New Year's Eve memorable, providing real-time countdowns, vibrant visuals, and a festive atmosphere that will get you in the celebratory spirit.
 
 Whether you're counting down with friends and family or embracing the moment solo, our app is your companion for the final seconds of the year. Get ready to bid farewell to the past and welcome the future with open arms.
+
+Live link: [New Year's Countdown](https://nacht-falter.github.io/new-years-countdown/)
 
 ## **Deployment**
 
@@ -16,7 +18,7 @@ The website was deployed to GitHub pages:
 - Under the **Source** section, select the **Main** branch from the drop-down menu and click **Save**.
 - A message will appear to confirm a successful deployment to GitHub pages and provide the live link.
 
-The project is deployed and can be accessed here: [New Year's Countdown]()
+The project is deployed and can be accessed here: [New Year's Countdown](https://nacht-falter.github.io/new-years-countdown/)
 
 ### Forking the GitHub Repository
 - Go to the GitHub repository.
