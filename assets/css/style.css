@@ -5,6 +5,26 @@
   background-color: white;
 }
 
+.container {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-container {
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.countdown-item {
+    text-align: center;
+    margin: 0 10px;
+}
+
 @media (max-width: 768px) {
   .timer {
     width: 60vw;
