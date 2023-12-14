@@ -25,7 +25,7 @@ var countdownInterval = setInterval(function() {
     // If the countdown is over, display a message
     if (distance < 0) {
         clearInterval(countdownInterval);
-        document.getElementById("days").innerHTML = "EXPIRED";
+        document.getElementById("days").innerHTML = "Happy new year!";
         document.getElementById("hours").innerHTML = "";
         document.getElementById("minutes").innerHTML = "";
         document.getElementById("seconds").innerHTML = "";
