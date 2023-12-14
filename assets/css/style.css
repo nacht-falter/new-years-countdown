@@ -1,0 +1,15 @@
+.timer {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .timer {
+    width: 60vw;
+    height: 60vw;
+  }
+}
+
+
