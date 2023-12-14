@@ -1,5 +1,6 @@
-// Set the date we're counting down to
-var countDownDate = new Date("Dec 31, 2023 00:00:00").getTime();
+/// Set the date we're counting down to
+const now = new Date();
+var countDownDate =  new Date(now.getFullYear() + 1, 0, 1);
 
 // Update the countdown every 1 second
 var countdownInterval = setInterval(function() {
@@ -21,6 +22,13 @@ var countdownInterval = setInterval(function() {
     document.getElementById("hours").innerHTML = hours + "h";
     document.getElementById("minutes").innerHTML = minutes + "m";
     document.getElementById("seconds").innerHTML = seconds + "s";
+
+    // Pick up the timeZone
+    const timezoneName = now.toLocaleString('en-US', { timeZoneName: 'short' });
+
+    const timezoneElement = document.getElementById('timezone');
+    timezoneElement.textContent = `Time zone: ${timezoneName}`;
+    
 
     // If the countdown is over, display a message
     if (distance < 0) {
