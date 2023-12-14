@@ -37,7 +37,24 @@ canvas {
     background-color: var(--color-white);
     position: relative;
 }
-  
+
+.video-panel {
+  position: absolute;
+  width: 400px;
+  height: fit-content;
+  border: 1px solid white;
+  right: 10px;
+}
+
+.drag-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: black;
+}
+
 .container {
       color: black;
       display: flex;

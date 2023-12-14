@@ -2,6 +2,12 @@
 const now = new Date();
 var countDownDate =  new Date(now.getFullYear() + 1, 0, 1);
 
+// jquery listener for viewing video panel and dragging it
+$(".video-panel").draggable();
+$('.video-panel-btn').on('click', function(){
+    $(".video-panel").toggleClass('d-none')
+})
+
 // Update the countdown every 1 second
 var countdownInterval = setInterval(function() {
 
