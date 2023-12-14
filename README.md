@@ -2,6 +2,8 @@
 
 <h1 align="center"><strong>New Year's Countdown</strong></h1>
 
+![Happy New Year](assets/images/happy-new-year-progress-bar.jpg)
+
 ## **Intro**
 Welcome to ***New Year's Countdown*** -  your go-to destination for ringing in the new year with style and excitement! As the clock ticks down to midnight, join us on a virtual journey filled with anticipation, joy, and the thrill of a fresh start. Our app is designed to make your New Year's Eve memorable, providing real-time countdowns, vibrant visuals, and a festive atmosphere that will get you in the celebratory spirit.
 
