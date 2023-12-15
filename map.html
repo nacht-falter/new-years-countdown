@@ -20,10 +20,6 @@
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/2be66b3e41.js" crossorigin="anonymous"></script>
 
-    <!--Google Maps-->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script type="module" src="assets/js/events/map.js"></script>
-
 
 </head>
 
@@ -93,54 +89,8 @@
                 </div>
               </div>
         </div>
-        <div class="container pt-5 d-flex align-items-center justify-content-center text-center">
-            <div id="timers-container" class="row flex-column flex-md-row">
-                <div class="col" id="timer-container-1">
-                    <div class="timer-1" data-bs-theme="dark">
-                        <div class="countdown-container">
-                            <div id="days-timer-1" class="countdown-item"></div>
-                            <div id="hours-timer-1" class="countdown-item"></div>
-                            <div id="minutes-timer-1" class="countdown-item"></div>
-                            <div id="seconds-timer-1" class="countdown-item"></div>
-                        </div>
-                    </div>
-                    <p id="timezone-timer-1"></p>
-                    <p>Clock Style: ... </p>
-                </div>
-                <div class="col d-none" id="timer-container-2">
-                    <div class="timer-2" data-bs-theme="dark">
-                        <button data-timer-id="2" id="remove-timer-2" type="button" title="Remove timer"
-                            class="remove-timer-btn btn-close position-absolute top-0 end-0"
-                            aria-label="Close"></button>
-                        <div class="countdown-container">
-                            <div id="days-timer-2" class="countdown-item"></div>
-                            <div id="hours-timer-2" class="countdown-item"></div>
-                            <div id="minutes-timer-2" class="countdown-item"></div>
-                            <div id="seconds-timer-2" class="countdown-item"></div>
-                        </div>
-                    </div>
-                    <p id="timezone-timer-2"></p>
-                    <p>Clock Style: ... </p>
-                </div>
-                <div class="col d-none" id="timer-container-3">
-                    <div class="timer-3" data-bs-theme="dark">
-                        <button data-timer-id="3" id="remove-timer-3" type="button" title="Remove timer"
-                            class="remove-timer-btn btn-close position-absolute top-0 end-0"
-                            aria-label="Close"></button>
-                        <div class="countdown-container">
-                            <div id="days-timer-3" class="countdown-item"></div>
-                            <div id="hours-timer-3" class="countdown-item"></div>
-                            <div id="minutes-timer-3" class="countdown-item"></div>
-                            <div id="seconds-timer-3" class="countdown-item"></div>
-                        </div>
-                    </div>
-                    <p id="timezone-timer-3"></p>
-                    <p>Clock Style: ... </p>
-                </div>
-            </div>
-            <button class="btn btn-warning btn-sm mt-5" id="add-timer-btn">Add Timer</button>
-        </div>
-
+        <!-- Map-->
+        <div class='bg-dark'id="map"></div>
     </main>
 
     <!-- Footer-->
