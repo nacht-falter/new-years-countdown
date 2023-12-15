@@ -19,9 +19,14 @@ canvas {
   margin: 0;
   padding: 0;
 }
-  
+
+.p-4 a:hover {
+  color: #d4af37;
+}
+
 .heading {
-    text-align: center;
+  text-align: center;
+  margin-top: 50px;
 }
   
 .heading h1 {
@@ -260,9 +265,12 @@ li {
   border-radius: 4px;
 }
 
-@media (max-width: 768px) {
-    .timer {
-      width: 60vw;
-      height: 60vw;
-    }
+@media (max-width: 1400px) {
+  .countdown-item {
+    margin: 0 5px;
+  }
+
+  .countdown-container {
+    font-size: 20px;
+  }
 }
