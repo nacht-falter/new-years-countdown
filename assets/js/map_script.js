@@ -32,7 +32,7 @@ const geojson = {
             properties: {
                 id: 2,
                 name: "Los Angeles",
-                timezone: -2,
+                timezone: -8,
                 nye_countdown: "COUNTDOWN !"
             },
             geometry: {
@@ -79,10 +79,10 @@ for (const feature of geojson.features) {
     // Create countdown
     let x = setInterval(function() {
         let now = new Date().getTime();
-        let timeDifference = countDownDate - now;
+        let timeDifference = countDownDate - now - (feature.properties.timezone * 1000 * 60 * 60);
 
         let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + feature.properties.timezone;
+        let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
         
