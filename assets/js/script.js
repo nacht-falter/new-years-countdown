@@ -122,13 +122,25 @@ function displayTasks() {
   // Get tasks from localStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Display each task
-  tasks.forEach(task => {
+  // Display each task with a removal option
+  tasks.forEach((task, index) => {
       const listItem = document.createElement("li");
-      listItem.textContent = task;
+      listItem.innerHTML = `<span>${task}</span><button class="remove-task-btn" onclick="removeTask(${index})">&#10006;</button>`;
       taskList.appendChild(listItem);
   });
 }
 
+// Function to remove a task
+function removeTask(index) {
+  // Get tasks from localStorage
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  // Remove the task at the specified index
+  tasks.splice(index, 1);
+
+  // Update localStorage with the modified task list
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+
 // Call displayTasks on page load
 displayTasks();
+}
