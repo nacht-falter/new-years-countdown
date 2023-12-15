@@ -38,6 +38,7 @@ canvas {
     min-width: 250px;
     min-height: 250px;
     border-radius: 50%;
+    box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
     margin-bottom: 1rem; 
     border: 10px solid var(--color-white);
     color: var(--color-white);
@@ -212,6 +213,51 @@ footer a, header a {
 .snowflake:nth-of-type(11){
   left:65%;
   animation-delay:2.5s;
+}
+
+.to-do-container {
+  border: 5px solid #d4af37;
+  box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2%;
+}
+
+.to-do-container h2 {
+  color: #fff;
+  text-align: center;
+}
+
+#taskInput {
+  width: 70%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.list-button {
+  background-color: #d4af37;
+  color: #252525;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  left: 72%;
+  position: relative;
+  top: -13%;
+}
+
+.list-button:hover {
+  background-color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 4px 0;
+  padding: 8px;
+  border-radius: 4px;
 }
 
 @media (max-width: 768px) {
