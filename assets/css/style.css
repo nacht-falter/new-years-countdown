@@ -30,7 +30,7 @@ canvas {
     letter-spacing: 0.15em;
 }
   
-.timer {
+.timer-1, .timer-2, .timer-3 {
     width: 20vw;
     height: 20vw;
     min-width: 250px;
