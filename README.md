@@ -53,19 +53,19 @@ The tech used in this project is as follow:
 - [Google Fonts](https://fonts.google.com/)
 - ***HTML 5*** - Content and Structure
 - ***CSS 3*** - Styling
-- Javascript - Interactive features
+- ***Javascript*** - Interactive features
 - [Lucid Chart](https://www.lucidchart.com) - Wireframes
-- [Faviconer](http://www.faviconer.com/) - Favicon
 - Github - website hosting
 
 ## **Credits**
 
-- Favicon created using [Faviconer](http://www.faviconer.com/)
+- [Faviconer](http://www.faviconer.com/) - Favicon
+- [PavelTheCoder](https://pajasevi.github.io/CSSnowflakes/) - Snowflake effect
 - Credits and Thank You to all our team ***Jingle Squad*** for input during the project and great communication via Slack channel chat and calls.
-  - [Johannes Bernet](https://github.com/nacht-falter)
-  - [Dinis Machado](https://github.com/DinisMachado87)
-  - [Fernando Gonçalves](https://github.com/Goncalves95)
-  - [Yannick Ferenczi](https://github.com/yannickferenczi)
-  - [Jamie O'Neill](https://github.com/jamie33o)
-  - [Viola Bergere](https://github.com/violaberg)
-  - [Vasilica Pavaloi](https://github.com/Vasi012)
+- [Johannes Bernet](https://github.com/nacht-falter)
+- [Dinis Machado](https://github.com/DinisMachado87)
+- [Fernando Gonçalves](https://github.com/Goncalves95)
+- [Yannick Ferenczi](https://github.com/yannickferenczi)
+- [Jamie O'Neill](https://github.com/jamie33o)
+- [Viola Bergere](https://github.com/violaberg)
+- [Vasilica Pavaloi](https://github.com/Vasi012)
