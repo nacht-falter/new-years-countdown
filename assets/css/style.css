@@ -81,7 +81,17 @@ canvas {
      text-align: center;
      margin: 0 10px;
 }
-  
+
+footer, header{
+  background-color: black;
+}
+
+footer a, header a {
+  color: gray;
+  text-decoration: none;
+}
+
+
 /*Snowflake styling */
 .snowflake {
   color: #fff;
