@@ -1,6 +1,6 @@
 // jquery listener for viewing video panel and dragging it
 $(".video-panel").draggable();
-$(".video-panel-btn").on("click", function () {
+$(".video-panel-btn").on("click", function() {
   $(".video-panel").toggleClass("d-none");
 });
 
@@ -13,6 +13,7 @@ class countdownTimer {
     this.countDownDate = new Date(this.now.getFullYear() + 1, 0, 1);
     this.timerId = timerId;
     this.countdownInterval = null;
+    this.timerContainer = document.getElementById(`timer-container-${this.timerId}`);
   }
 
   start_countdown() {
@@ -52,8 +53,12 @@ class countdownTimer {
       document.getElementById(`hours-timer-${this.timerId}`).classList.add("d-none");
       document.getElementById(`minutes-timer-${this.timerId}`).classList.add("d-none");
       document.getElementById(`seconds-timer-${this.timerId}`).classList.add("d-none");
-      document.getElementById(`timer-timer-${this.timer - container - timerId}`).innerHTML = "Happy new year!";
+      document.getElementById(`timer-timer-${this.timerId}`).innerHTML = "Happy new year!";
     }
+  }
+
+  hideTimer() {
+    this.timerContainer.classList.add("d-none");
   }
 }
 
@@ -72,5 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timer_count === 3) {
       addTimerBtn.classList.add("d-none");
     }
+
+    const removeTimerHandler = () => {
+      newTimer.hideTimer();
+      document.getElementById(`remove-timer-${timer_count}`).removeEventListener("click", removeTimerHandler);
+      timer_count = timer_count > 1 ? timer_count - 1 : 1;
+
+      addTimerBtn.classList.remove("d-none");
+    };
+
+    document.getElementById(`remove-timer-${timer_count}`).addEventListener("click", removeTimerHandler);
   });
 });
