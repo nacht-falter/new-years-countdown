@@ -3,9 +3,9 @@ mapboxgl.accessToken = "pk.eyJ1IjoieWFubmlja2ZlcmVuY3ppIiwiYSI6ImNscTVkaHZtajBoe
 const map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/yannickferenczi/clq6eztad001001pka7aa4274",
-    zoom: 1,
-    minZoom: 1,
-    maxZoom: 3,
+    zoom: 1.5,
+    minZoom: 1.5,
+    maxZoom: 4,
 });
 
 const geojson = {
@@ -45,13 +45,13 @@ const geojson = {
             type: "Feature",
             properties: {
                 id: 3,
-                name: "Sydney",
+                name: "Melbourne",
                 timezone: 11,
             },
             geometry: {
                 coordinates: [
-                    151.20880405027583,
-                    -33.87407800977239
+                    144.96422533511287,
+                    -37.81853385878788
                 ],
                 type: "Point"
             }
@@ -180,13 +180,13 @@ const geojson = {
             type: "Feature",
             properties: {
                 id: 12,
-                name: "Zurich",
+                name: "Rome",
                 timezone: 1,
             },
             geometry: {
                 coordinates: [
-                    8.541135016550612,
-                    47.3737541349895
+                    12.48340687053107,
+                    41.89119236045434
                 ],
                 type: "Point"
             }
@@ -225,13 +225,13 @@ const geojson = {
             type: "Feature",
             properties: {
                 id: 15,
-                name: "Sao Paulo",
+                name: "Santiago",
                 timezone: -3,
             },
             geometry: {
                 coordinates: [
-                    -46.63184148149199,
-                    -23.555541089237337
+                    -70.6505980847211,
+                    -33.440614002504546
                 ],
                 type: "Point"
             }
@@ -285,13 +285,13 @@ const geojson = {
             type: "Feature",
             properties: {
                 id: 19,
-                name: "Salt Lake City",
+                name: "Edmonton",
                 timezone: -7,
             },
             geometry: {
                 coordinates: [
-                    -111.88652049193188,
-                    40.7585457692785
+                    -113.48959266495417,
+                    53.54336814119716
                 ],
                 type: "Point"
             }
