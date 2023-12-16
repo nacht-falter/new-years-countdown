@@ -14,15 +14,16 @@ class countdownTimer {
     // Luxon is a JavaScript library for working with dates and times
     this.luxonTime = luxon.DateTime;
     this.timeZoneName = timeZoneName ? timeZoneName : this.luxonTime.local().zoneName;
-    console.log(this.timeZoneName);
-    this.restartAnimation();
+    this.timeTillNewYears = null;
     this.updateCountdown();
+    this.restartAnimation(this.timerId);
   }
 
   updateCountdown() {
     // calculate the distance between new years eve in the selected timezone and the users local time
     const userTime = this.luxonTime.local();
     const timeInZone = this.luxonTime.local().setZone(this.timeZoneName);
+
     const currentYear = this.luxonTime.now().year;
 
     // Set New Year's Eve for the next year in the specified timezone
@@ -39,6 +40,7 @@ class countdownTimer {
     );
     // get the distance between the users local time and new years eve in the selected timezone
     const distance = newYearsEve.diff(timeInZone).as("milliseconds");
+    this.timeTillNewYears = distance
 
     if (distance > 0) {
       // calculate time units
@@ -51,10 +53,6 @@ class countdownTimer {
       document.getElementById(`hours-timer-${this.timerId}`).innerHTML = hours + "h ";
       document.getElementById(`minutes-timer-${this.timerId}`).innerHTML = minutes + "m ";
       document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds + "s ";
-
-      const circle = document.querySelector(`.circle-${this.timerId}`);
-      const animationDuration = distance / 1000;
-      circle.style.animation = `countdown-animation-${this.timerId} ${animationDuration}s linear infinite`;
 
       const timezoneElement = document.getElementById(`timezone-timer-${this.timerId}`);
       timezoneElement.textContent = `Time zone: ${this.timeZoneName}`;
@@ -73,24 +71,43 @@ class countdownTimer {
   /**
    * This function is for the timer circle animation
    */
-  restartAnimation() {
-    //this is the svg for the timer animation
-    $(`.timer-${this.timerId}`).prepend(`
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-      <defs>
-          <linearGradient id="GradientColor">
-          <stop offset="0%" stop-color="#e91e63" />
-          <stop offset="100%" stop-color="#673ab7" />
-          </linearGradient>
-      </defs>
-      <circle class="circle-${this.timerId}" cx="140" cy="140" r="145"/>
-  </svg>`);
+  restartAnimation(timerId) {
+    const svgContainer = $(`.timer-${timerId}`);
+    svgContainer.prepend(`
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <linearGradient id="GradientColor">
+            <stop offset="0%" stop-color="#e91e63" />
+            <stop offset="100%" stop-color="#673ab7" />
+            </linearGradient>
+        </defs>
+        <circle class="circle-${timerId}" cx="140" cy="140" r="145"/>
+    </svg>`);
+  
+    const element = document.querySelector(`.circle-${timerId}`);
 
-    const element = document.querySelector(`.circle-${this.timerId}`);
-    element.animate(
-      { strokeDashoffset: [0, -1019] },
-      { duration: 60000, easing: "linear", fill: "forwards", iterations: Infinity }
-    );
+    let self = this
+  
+    function updateAnimation() {
+      const totalDashes = 910;  // Total number of dashes in the circle
+      const millisecondsInYear = 31536000000;  // Number of milliseconds in a year
+
+      // Get the remaining time in milliseconds
+      const timeLeftInYear = self.timeTillNewYears;
+      
+
+      // Calculate the percentage of the year that has passed
+      const percentageYearPassed = (millisecondsInYear - timeLeftInYear) / millisecondsInYear;
+      
+      // Calculate the number of dashes remaining based on the percentage
+      const dashesRemaining = Math.floor(totalDashes * (1 - percentageYearPassed));     
+     
+      element.style.strokeDashoffset = -totalDashes + dashesRemaining ;
+  
+      requestAnimationFrame(updateAnimation);
+    }
+  
+    updateAnimation();
   }
 }
 
