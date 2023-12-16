@@ -1,25 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
 :root {
-    --color-white: #d4af37;
-    --color-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  --color-white: #d4af37;
+  --color-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
-  
+
 * {
-    padding: 0;
-    margin: 0;
-    font-family: "Orbitron", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
 }
-  
+
 body {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-.p-4 a:hover {
+main {
+  margin-bottom: 120px;
+}
+
+a {
+  color: #0dcaf0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
   color: #d4af37;
 }
 
@@ -27,24 +34,37 @@ body {
   text-align: center;
   margin-top: 50px;
 }
-  
+
 .heading h1 {
-    text-shadow: var(--color-shadow);
-    color: var(--color-white);
-    font-size: 4.2em;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    margin-bottom: 0;
-    padding-top: 2%;
+  text-shadow: var(--color-shadow);
+  color: var(--color-white);
+  font-size: 4em;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 0;
+  padding-top: 2%;
 }
+
+@media (max-width: 768px) {
+  .heading h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading h1 {
+    font-size: 2em;
+  }
+}
+
 /* circle timer animaation */
-circle {    
+circle {
   position: absolute;
   fill: none;
   stroke: url(#GradientColor);
   stroke-width: 20px;
   stroke-dasharray: 1072;
-  stroke-dashoffset: 0;  
+  stroke-dashoffset: 0;
   stroke-linecap: round;
 }
 
@@ -52,21 +72,24 @@ svg {
   position: absolute;
   left: 0;
   bottom: 0;
-  overflow:visible;
+  overflow: visible;
   transform: rotate(-90deg);
   width: 300px;
   height: 300px;
 }
 
-.timer-1, .timer-2, .timer-3 {
+.timer-1,
+.timer-2,
+.timer-3 {
   position: relative;
   width: 300px;
   height: 300px;
+  margin-top: 2rem;
   min-width: 250px;
   min-height: 250px;
   border-radius: 50%;
   box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   border: 10px solid var(--color-white);
   color: var(--color-white);
   position: relative;
@@ -75,6 +98,11 @@ svg {
   align-items: center;
 }
 
+#timezone-timer-1,
+#timezone-timer-2,
+#timezone-timer-3 {
+  font-family: sans-serif;
+}
 
 /* video call panel styles */
 .video-panel {
@@ -97,7 +125,7 @@ svg {
 /* timezones list */
 .time-zone-list {
   position: absolute;
-  height: 400px;
+  height: 60vh;
   width: fit-content;
   overflow: auto;
   border: 1px solid white;
@@ -106,154 +134,182 @@ svg {
   background-color: black;
 }
 
+.time-zone-list li {
+  font-family: sans-serif;
+  padding: 2px;
+}
+
+.time-zone-list button {
+  width: 100%;
+}
+
+.time-zone-list button:hover {
+  background-color: #d4af37;
+  border-color: #d4af37;
+}
+
 .container {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-  
+
 .countdown-container {
-     display: flex;
-     justify-content: space-around;
-     font-size: 24px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
 }
-  
+
 .countdown-item {
-     text-align: center;
-     margin: 0 10px;
+  text-align: center;
+  margin: 0 10px;
 }
-  
+
 /*Snowflake styling */
 .snowflake {
   color: #fff;
 }
- 
-.snowflake,.snowflake .inner{
-  animation-iteration-count:infinite;
-  animation-play-state:running;
+
+.snowflake,
+.snowflake .inner {
+  animation-iteration-count: infinite;
+  animation-play-state: running;
 }
 
-@keyframes snowflakes-fall{
-  0%{transform:translateY(0);
+@keyframes snowflakes-fall {
+  0% {
+    transform: translateY(0);
   }
-  100%{transform:translateY(110vh);
-  }
-}
-@keyframes snowflakes-shake{
-  0%,100%{transform:translateX(0);
-  }
-  50%{transform:translateX(80px);
+
+  100% {
+    transform: translateY(110vh);
   }
 }
 
-.snowflake{
-  position:fixed;
-  top:-10%;
-  z-index:9999;
-  -webkit-user-select:none;
-  user-select:none;cursor:default;
-  animation-name:snowflakes-shake;
-  animation-duration:3s;
-  animation-timing-function:ease-in-out;
+@keyframes snowflakes-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(80px);
+  }
 }
 
-.snowflake .inner{
-  animation-duration:10s;
-  animation-name:snowflakes-fall;
-  animation-timing-function:linear;
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+  animation-name: snowflakes-shake;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
 }
 
-.snowflake:nth-of-type(0){
-  left:1%;
-  animation-delay:0s;
+.snowflake .inner {
+  animation-duration: 10s;
+  animation-name: snowflakes-fall;
+  animation-timing-function: linear;
 }
 
-.snowflake:nth-of-type(0) .inner{
-  animation-delay:0s;
+.snowflake:nth-of-type(0) {
+  left: 1%;
+  animation-delay: 0s;
 }
 
-.snowflake:first-of-type{
-  left:10%;
-  animation-delay:1s;
+.snowflake:nth-of-type(0) .inner {
+  animation-delay: 0s;
 }
 
-.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{
-  animation-delay:1s;
+.snowflake:first-of-type {
+  left: 10%;
+  animation-delay: 1s;
 }
 
-.snowflake:nth-of-type(2){
-  left:20%;
-  animation-delay:.5s;
+.snowflake:first-of-type .inner,
+.snowflake:nth-of-type(8) .inner {
+  animation-delay: 1s;
 }
 
-.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{
-  animation-delay:6s;
+.snowflake:nth-of-type(2) {
+  left: 20%;
+  animation-delay: 0.5s;
 }
 
-.snowflake:nth-of-type(3){
-  left:30%;
-  animation-delay:2s;
+.snowflake:nth-of-type(2) .inner,
+.snowflake:nth-of-type(6) .inner {
+  animation-delay: 6s;
 }
 
-.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{
-  animation-delay:4s;
+.snowflake:nth-of-type(3) {
+  left: 30%;
+  animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(4){
-  left:40%;
-  animation-delay:2s;
+.snowflake:nth-of-type(11) .inner,
+.snowflake:nth-of-type(3) .inner {
+  animation-delay: 4s;
 }
 
-.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{
-  animation-delay:2s;
+.snowflake:nth-of-type(4) {
+  left: 40%;
+  animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(5){
-  left:50%;
-  animation-delay:3s;
+.snowflake:nth-of-type(10) .inner,
+.snowflake:nth-of-type(4) .inner {
+  animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(5) .inner{
-  animation-delay:8s;
+.snowflake:nth-of-type(5) {
+  left: 50%;
+  animation-delay: 3s;
 }
 
-.snowflake:nth-of-type(6){
-  left:60%;
-  animation-delay:2s;
+.snowflake:nth-of-type(5) .inner {
+  animation-delay: 8s;
 }
 
-.snowflake:nth-of-type(7){
-  left:70%;
-  animation-delay:1s;
+.snowflake:nth-of-type(6) {
+  left: 60%;
+  animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(7) .inner{
-  animation-delay:2.5s;
+.snowflake:nth-of-type(7) {
+  left: 70%;
+  animation-delay: 1s;
 }
 
-.snowflake:nth-of-type(8){
-  left:80%;
-  animation-delay:0s;
+.snowflake:nth-of-type(7) .inner {
+  animation-delay: 2.5s;
 }
 
-.snowflake:nth-of-type(9){
-  left:90%;
-  animation-delay:1.5s;
+.snowflake:nth-of-type(8) {
+  left: 80%;
+  animation-delay: 0s;
 }
 
-.snowflake:nth-of-type(9) .inner{
-  animation-delay:3s;
+.snowflake:nth-of-type(9) {
+  left: 90%;
+  animation-delay: 1.5s;
 }
 
-.snowflake:nth-of-type(10){
-  left:25%;
-  animation-delay:0s;
+.snowflake:nth-of-type(9) .inner {
+  animation-delay: 3s;
 }
 
-.snowflake:nth-of-type(11){
-  left:65%;
-  animation-delay:2.5s;
+.snowflake:nth-of-type(10) {
+  left: 25%;
+  animation-delay: 0s;
+}
+
+.snowflake:nth-of-type(11) {
+  left: 65%;
+  animation-delay: 2.5s;
 }
 
 .to-do-container {
@@ -316,12 +372,15 @@ li {
 
 /* For WebKit browsers (e.g., Chrome, Safari) */
 ::-webkit-scrollbar {
-  width: 6px; /* width of the scrollbar */
+  width: 6px;
+  /* width of the scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #252525; /* color of the scrollbar thumb */
-  border-radius: 4px; /* rounded corners of the scrollbar thumb */
+  background-color: #252525;
+  /* color of the scrollbar thumb */
+  border-radius: 4px;
+  /* rounded corners of the scrollbar thumb */
 }
 
 @media (max-width: 1400px) {
