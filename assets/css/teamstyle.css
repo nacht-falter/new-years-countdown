@@ -44,7 +44,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_2.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
@@ -54,7 +54,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_1.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
@@ -64,7 +64,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_3.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
@@ -74,7 +74,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_4.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
@@ -84,7 +84,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_l.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
@@ -94,7 +94,7 @@ body {
   background-image: url("/assets/images/avatar_team/avatar_noel.jpg");
   background-position: center;
   background-size: cover;
-  height: 600px;
+  height: 60vh;
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255, 0.255);
