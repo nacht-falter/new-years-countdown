@@ -61,6 +61,8 @@ class countdownTimer {
       $(`.cur-time-${this.timerId}`).html(formattedDateTime);
     } else {
       document.getElementById(`timer-container-${this.timerId}`).innerHTML = "Happy new year!";
+      //show the fireworks when its new years
+      $('.pyro').removeClass('d-none')
     }
   }
 
@@ -94,14 +96,13 @@ class countdownTimer {
 
       // Get the remaining time in milliseconds
       const timeLeftInYear = self.timeTillNewYears;
-      
-
+    
       // Calculate the percentage of the year that has passed
       const percentageYearPassed = (millisecondsInYear - timeLeftInYear) / millisecondsInYear;
       
       // Calculate the number of dashes remaining based on the percentage
       const dashesRemaining = Math.floor(totalDashes * (1 - percentageYearPassed));     
-     
+      // -910 is the circle completely gone so add the dashesRemaining to -910 
       element.style.strokeDashoffset = -totalDashes + dashesRemaining ;
   
       requestAnimationFrame(updateAnimation);
