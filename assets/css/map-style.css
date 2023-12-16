@@ -4,11 +4,21 @@
     height: 100vh;
 }
 
-.marker {
+.marker-2023 {
     background-image: url(../images/fireworks_108980.png);
     background-size: cover;
     width: 50px;
     height: 50px;
+    margin: 0 auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.marker-2024 {
+    background-image: url(../images/fireworks_2024_bis.gif);
+    background-size: cover;
+    width: 100px;
+    height: 100px;
     margin: 0 auto;
     border-radius: 50%;
     cursor: pointer;
