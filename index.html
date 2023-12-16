@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Year's Countdown</title>
-
-
+    <!-- luxon - Luxon is a JavaScript library for working with dates and times -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <!-- bootstrap cdn link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -100,6 +100,8 @@
                     </div>
                     <p id="timezone-timer-1"></p>
                     <p>Clock Style: ... </p>
+                    <!-- show current date time -->
+                    <p class="cur-time-1"></p>
                 </div>
                 <div class="col d-none" id="timer-container-2">
                     <div class="timer-2" data-bs-theme="dark">
@@ -115,6 +117,9 @@
                     </div>
                     <p id="timezone-timer-2"></p>
                     <p>Clock Style: ... </p>
+                    <!-- show current date time -->
+                    <p class="cur-time-2"></p>
+
                 </div>
                 <div class="col d-none" id="timer-container-3">
                     <div class="timer-3" data-bs-theme="dark">
@@ -130,11 +135,16 @@
                     </div>
                     <p id="timezone-timer-3"></p>
                     <p>Clock Style: ... </p>
+                    <!-- show current date time -->
+                    <p class="cur-time-3"></p>
                 </div>
             </div>
             <button class="btn btn-warning btn-sm mt-5" id="add-timer-btn">Add Timer</button>
+            <!-- div for showing a list of timezones populated wit js-->
+            <div class="time-zone-list d-none">
+                <ul></ul>
+            </div>
         </div>
-
     </main>
 
     <footer class="fixed-bottom p-4">
