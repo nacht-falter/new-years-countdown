@@ -11,8 +11,7 @@
     font-family: "Orbitron", sans-serif;
 }
   
-body,
-canvas {
+body {
   position: absolute;
   width: 100%;
   height: 100%;
