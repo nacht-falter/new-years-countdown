@@ -38,22 +38,44 @@ canvas {
     margin-bottom: 0;
     padding-top: 2%;
 }
-  
-.timer-1, .timer-2, .timer-3 {
-    width: 20vw;
-    height: 20vw;
-    min-width: 250px;
-    min-height: 250px;
-    border-radius: 50%;
-    box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
-    margin-bottom: 1rem; 
-    border: 10px solid var(--color-white);
-    color: var(--color-white);
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* circle timer animaation */
+circle {    
+  position: absolute;
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 1072;
+  stroke-dashoffset: 0;  
+  stroke-linecap: round;
 }
+
+svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow:visible;
+  transform: rotate(-90deg);
+  height: 300px;
+  width: 300px;
+}
+
+.timer-1, .timer-2, .timer-3 {
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+  min-width: 250px;
+  min-height: 250px;
+  border-radius: 50%;
+  box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
+  margin-bottom: 1rem; 
+  border: 10px solid var(--color-white);
+  color: var(--color-white);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* video call panel styles */
 .video-panel {

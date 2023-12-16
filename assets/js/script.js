@@ -8,12 +8,16 @@ $(".video-panel-btn").on("click", function() {
  * Class for countdown timer
  */
 class countdownTimer {
-  constructor(timerId) {
+  constructor(timerId, timeZoneName) {
     this.now = new Date();
     this.countDownDate = new Date(this.now.getFullYear() + 1, 0, 1);
     this.timerId = timerId;
     this.countdownInterval = null;
     this.timerContainer = document.getElementById(`timer-container-${this.timerId}`);
+    // Luxon is a JavaScript library for working with dates and times
+    this.luxonTime = luxon.DateTime
+    this.timeZoneName = timeZoneName ? timeZoneName : this.luxonTime.local().zoneName;
+    this.restartAnimation()
   }
 
   start_countdown() {
@@ -24,8 +28,14 @@ class countdownTimer {
   }
 
   updateCountdown() {
-    // Get today's date and time
+    // get time based on timezone name
+    let newTimeZone = this.luxonTime.now().setZone(this.timeZoneName);
+    // format the time
+    const formattedDateTime = `<br>Date: ${newTimeZone.toFormat('D')}, <br>Time: ${newTimeZone.toFormat('h:mm:ss')}`;
+
     this.currentDate = new Date();
+    // p element display the timezone time
+    $(`.cur-time-${this.timerId}`).html(formattedDateTime)
     // Calculate the remaining time
     var distance = this.countDownDate - this.currentDate;
 
@@ -44,8 +54,7 @@ class countdownTimer {
 
       // Pick up the timeZone
       const timezoneElement = document.getElementById(`timezone-timer-${this.timerId}`);
-      const timezoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      timezoneElement.textContent = `Time zone: ${timezoneName}`;
+      timezoneElement.textContent = `Time zone: ${this.timeZoneName}`;
     } else {
       // If the countdown is over, display a message
       clearInterval(this.countdownInterval);
@@ -59,7 +68,32 @@ class countdownTimer {
 
   hideTimer() {
     this.timerContainer.classList.add("d-none");
+    // clear the timer so its not running in the background
+    clearInterval(this.countdownInterval);
   }
+  /**
+ * This function is for the timer circle animation
+ */
+  restartAnimation() {
+    //this is the svg for the timer animation
+    $(`.timer-${this.timerId}`).prepend(`
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+          <linearGradient id="GradientColor">
+          <stop offset="0%" stop-color="#e91e63" />
+          <stop offset="100%" stop-color="#673ab7" />
+          </linearGradient>
+      </defs>
+      <circle class="circle-${this.timerId}" cx="155" cy="155" r="160"/>
+  </svg>`);
+
+    const element = document.querySelector(`.circle-${this.timerId}`);
+    element.animate(
+              { strokeDashoffset: [0, -1019] },
+              { duration: 60000, easing: 'linear', fill: 'forwards', iterations: Infinity }
+            );
+  }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -70,8 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const addTimerBtn = document.getElementById("add-timer-btn");
   addTimerBtn.addEventListener("click", () => {
+    // show the timezones list
+    showTimeZoneList()
+   });
+  // listener for timezones list
+  $(document).on('click', '.tz-name', function(){
+    // hide the timezone list and start the timer
+    $('.time-zone-list').toggleClass('d-none')
     timer_count++;
-    const newTimer = new countdownTimer(timer_count);
+    // pass the button's text that is clicked 
+    const newTimer = new countdownTimer(timer_count, $(this).text().trim());
     document.getElementById(`timer-container-${timer_count}`).classList.remove("d-none");
     newTimer.start_countdown();
     if (timer_count === 3) {
@@ -82,13 +124,30 @@ document.addEventListener("DOMContentLoaded", () => {
       newTimer.hideTimer();
       document.getElementById(`remove-timer-${timer_count}`).removeEventListener("click", removeTimerHandler);
       timer_count = timer_count > 1 ? timer_count - 1 : 1;
-
       addTimerBtn.classList.remove("d-none");
     };
 
     document.getElementById(`remove-timer-${timer_count}`).addEventListener("click", removeTimerHandler);
-  });
+  
+    
+  })
 });
+/**
+ * adds li elements with a button as a child element to the time zone div with the 
+ * time zone names as the text the names are stored in the json file timezone-names.json
+ */
+function showTimeZoneList() {
+  $('.time-zone-list').toggleClass('d-none')
+  if($('.tz-name').length < 1){
+    $.getJSON('timezone-names.json', function (data) {
+      // Process the JSON data
+      $.each(data, function (index, item) {
+        $('.time-zone-list ul').append(`<li><button class="tz-name btn btn-info"> ${item}</button></li>`)
+      });
+    });
+  }
+  
+}
 
 // Function to add a new task
 function addTask() {
@@ -144,3 +203,6 @@ function removeTask(index) {
 // Call displayTasks on page load
 displayTasks();
 }
+
+
+
