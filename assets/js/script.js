@@ -84,7 +84,7 @@ class countdownTimer {
           <stop offset="100%" stop-color="#673ab7" />
           </linearGradient>
       </defs>
-      <circle class="circle-${this.timerId}" cx="155" cy="155" r="160"/>
+      <circle class="circle-${this.timerId}" cx="140" cy="140" r="145"/>
   </svg>`);
 
     const element = document.querySelector(`.circle-${this.timerId}`);
