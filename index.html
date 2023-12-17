@@ -25,7 +25,6 @@
 <body class="text-light">
     <header>
         <nav class="p-4">
-            <!-- TODO: Add a logo -->
             <ul class="nav justify-content-end">
                 <li class="me-2">
                     <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -33,7 +32,6 @@
                 <li>
                     <a class="me-2" href="map.html"><i class="fas fa-map"></i> Map</a>
                 </li>
-                <!-- <li><a class="video-panel-btn me-3" href="#">Video call</a></li> -->
                 <li>
                     <a class="me-2" href="list.html" aria-label="Takes to To-Do List">
                         <i class="fas fa-list"></i> To-Do List</a>
@@ -89,6 +87,10 @@
             <div class="before"></div>
             <div class="after"></div>
         </div>
+
+        <!-- Container for task notification -->
+        <div id="alertContainer" class="position-fixed top-0 end-0 p-3 mt-5" style="z-index: 5"></div>
+
         <div class="container pt-5 d-flex align-items-center justify-content-center text-center">
             <div id="timers-container" class="row flex-column flex-xl-row">
                 <div class="col" id="timer-container-1">
