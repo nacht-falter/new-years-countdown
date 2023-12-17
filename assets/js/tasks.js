@@ -1,7 +1,6 @@
 // Function to add a new task
 function addTask() {
   const taskInput = document.getElementById("taskInput");
-  const taskList = document.getElementById("taskList");
 
   // Get existing tasks from localStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -9,7 +8,7 @@ function addTask() {
   // Add the new task
   const newTask = taskInput.value.trim();
   if (newTask !== "") {
-    tasks.push(newTask);
+    tasks.push({ task: newTask, completed: false });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     // Update the UI
@@ -30,10 +29,39 @@ function displayTasks() {
   // Get tasks from localStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Display each task with a removal option
+  // Display each task with a checkbox, marked as completed or not, and a removal option
   tasks.forEach((task, index) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<span>${task}</span><button class="remove-task-btn" onclick="removeTask(${index})">❌</button>`;
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList.add("me-2");
+    checkbox.title = "Mark as completed";
+    checkbox.checked = task.completed;
+    checkbox.addEventListener("change", function () {
+      tasks[index].completed = this.checked;
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTasks();
+    });
+
+    const taskText = document.createElement("span");
+    taskText.textContent = task.task;
+    if (task.completed) {
+      taskText.style.textDecoration = "line-through";
+    }
+
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("remove-task-btn");
+    removeButton.textContent = "❌";
+    removeButton.title = "Remove task";
+    removeButton.addEventListener("click", function () {
+      tasks.splice(index, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTasks();
+    });
+
+    listItem.appendChild(checkbox);
+    listItem.appendChild(taskText);
+    listItem.appendChild(removeButton);
     taskList.appendChild(listItem);
   });
 }
@@ -52,3 +80,6 @@ function removeTask(index) {
   // Call displayTasks on page load
   displayTasks();
 }
+
+// Display tasks on page load
+displayTasks();

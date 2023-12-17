@@ -28,30 +28,31 @@
 }
 
 .banner-image1 {
-  background-image: url("/assets/images/avatar_team/avatar_2.jpg");
+  background-image: url("../images/avatar_team/avatar_2.jpg");
 }
 
 .banner-image2 {
-  background-image: url("/assets/images/avatar_team/avatar_1.jpg");
+  background-image: url("../images/avatar_team/avatar_1.jpg");
 }
 
 .banner-image3 {
-  background-image: url("/assets/images/avatar_team/avatar_3.jpg");
+  background-image: url("../images/avatar_team/avatar_3.jpg");
 }
 
 .banner-image4 {
-  background-image: url("/assets/images/avatar_team/avatar_4.jpg");
+  background-image: url("../images/avatar_team/avatar_4.jpg");
 }
 
 .banner-image5 {
-  background-image: url("/assets/images/avatar_team/avatar_l.jpg");
+  background-image: url("../images/avatar_team/avatar_l.jpg");
 }
 
 .banner-image6 {
-  background-image: url("/assets/images/avatar_team/avatar_noel.jpg");
+  background-image: url("../images/avatar_team/avatar_noel.jpg");
 }
 
 h1 {
+  margin-top: 3rem;
   color: rgba(255, 255, 255, 0.98);
   font-size: 2.4rem;
 }
