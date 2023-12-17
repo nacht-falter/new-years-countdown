@@ -35,7 +35,6 @@ a:hover {
 
 .heading {
   text-align: center;
-  margin-top: 50px;
 }
 
 .p-4 {
@@ -61,6 +60,41 @@ a:hover {
   letter-spacing: 0.15em;
   margin-bottom: 0;
   padding-top: 2%;
+}
+
+/* santa run game styles */
+canvas {
+  display: block;
+  top: 0;
+  width: 100%;
+  height: 170px;
+}
+
+#game-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 50px auto;
+  border: 1px solid white; 
+  width: 400px; 
+  max-width: 100%;
+}
+
+#start {
+  position: absolute;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  width: fit-content;
+  z-index: 300;
+  margin: 3px;
 }
 
 @media (max-width: 768px) {

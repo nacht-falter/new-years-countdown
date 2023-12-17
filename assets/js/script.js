@@ -1,8 +1,3 @@
-// jquery listener for viewing video panel and dragging it
-$(".video-panel").draggable();
-$(".video-panel-btn").on("click", function() {
-  $(".video-panel").toggleClass("d-none");
-});
 
 /*
  * Class for countdown timer
