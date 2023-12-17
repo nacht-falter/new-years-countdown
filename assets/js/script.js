@@ -19,7 +19,7 @@ class countdownTimer {
     this.restartAnimation(this.timerId);
   }
 
-  updateCountdown() {
+  updateCountdown(simulateCountdown) {
     // calculate the distance between new years eve in the selected timezone and the users local time
     const userTime = this.luxonTime.local();
     const timeInZone = this.luxonTime.local().setZone(this.timeZoneName);
@@ -39,7 +39,12 @@ class countdownTimer {
       { zone: this.timeZoneName }
     );
     // get the distance between the users local time and new years eve in the selected timezone
-    const distance = newYearsEve.diff(timeInZone).as("milliseconds");
+    let distance;
+    if(!simulateCountdown && simulateCountdown != 0){
+      distance = newYearsEve.diff(timeInZone).as("milliseconds");
+    }else{
+      distance = simulateCountdown * 1000;
+    }
     this.timeTillNewYears = distance
 
     if (distance > 0) {
@@ -83,7 +88,7 @@ class countdownTimer {
             <stop offset="100%" stop-color="#673ab7" />
             </linearGradient>
         </defs>
-        <circle class="circle-${timerId}" cx="140" cy="140" r="145"/>
+        <circle class="circle-${timerId}" cx="140" cy="160" r="145"/>
     </svg>`);
   
     const element = document.querySelector(`.circle-${timerId}`);
@@ -94,7 +99,7 @@ class countdownTimer {
       const totalDashes = 910;  // Total number of dashes in the circle
       const millisecondsInYear = 31536000000;  // Number of milliseconds in a year
 
-      // Get the remaining time in milliseconds
+      // Get the remaining time in milliseconds 15768000000 86400000
       const timeLeftInYear = self.timeTillNewYears;
     
       // Calculate the percentage of the year that has passed
@@ -103,7 +108,7 @@ class countdownTimer {
       // Calculate the number of dashes remaining based on the percentage
       const dashesRemaining = Math.floor(totalDashes * (1 - percentageYearPassed));     
       // -910 is the circle completely gone so add the dashesRemaining to -910 
-      element.style.strokeDashoffset = -totalDashes + dashesRemaining ;
+      element.style.strokeDashoffset = -dashesRemaining ;
   
       requestAnimationFrame(updateAnimation);
     }
@@ -115,6 +120,7 @@ class countdownTimer {
 document.addEventListener("DOMContentLoaded", () => {
   let timer_count = 1;
   const timers = [];
+  let simulateCountdown = null;
 
   const initialTimer = new countdownTimer(timer_count);
 
@@ -126,6 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // show the timezones list
     showTimeZoneList();
   });
+  // btn listener for simulating the countdown
+  $('#simulate-btn').on('click', function() {
+    if($(this).text() === 'Close simulator'){
+      location.reload()
+    }else{
+      simulateCountdown = 10
+      $(this).text('Close simulator')
+    }
+  })
+
   // listener for timezones list
   $(document).on("click", ".tz-name", function() {
     // hide the timezone list and start the timer
@@ -157,7 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set interval on the global scope so it can be cleared later
   setInterval(() => {
     timers.forEach((timer) => {
-      timer.updateCountdown();
+        timer.updateCountdown(simulateCountdown);
+        if(simulateCountdown){
+          simulateCountdown--
+        }
     });
   }, 1000);
 });
