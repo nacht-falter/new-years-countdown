@@ -6,6 +6,7 @@ const map = new mapboxgl.Map({
     zoom: 1.5,
     minZoom: 1.5,
     maxZoom: 4,
+    center: [8, 9],
 });
 
 const geojson = {
@@ -180,13 +181,13 @@ const geojson = {
             type: "Feature",
             properties: {
                 id: 12,
-                name: "Rome",
+                name: "Palermo",
                 timezone: 1,
             },
             geometry: {
                 coordinates: [
-                    12.48340687053107,
-                    41.89119236045434
+                    13.351484839986767,
+                    38.10979615437353
                 ],
                 type: "Point"
             }
@@ -359,7 +360,7 @@ const geojson = {
     ]
 };
 
-var countDownDate = new Date("2023-12-17T00:00:00+00:00").getTime();
+var countDownDate = new Date("2024-01-01T00:00:00+00:00").getTime();
 
 for (const feature of geojson.features) {
     // Create a container for every marker on the map
@@ -386,7 +387,24 @@ for (const feature of geojson.features) {
         
         let propertiesElement = document.getElementById(`marker-properties-${feature.properties.id}`);
         propertiesElement.innerHTML = `<h4 class="centered">${feature.properties.name}</h4>`;
-        propertiesElement.innerHTML += `<p class="centered">${days}d ${hours}h ${minutes}m ${seconds}s</p>`;
+        if (days <= 0) {
+            if (hours <= 0) {
+                if (minutes <= 0) {
+                    propertiesElement.innerHTML += `<p class="centered no-minutes">${seconds}</p>`;
+                } else {
+                    propertiesElement.innerHTML += `<p class="centered no-hours">${minutes} : ${seconds}</p>`;
+                };
+
+            } else {
+                propertiesElement.innerHTML += `<p class="centered no-days">${hours} : ${minutes} : ${seconds}</p>`;
+            };
+        } else {
+            let moreDays = 's';
+            if (days === 1) {
+                moreDays = '';
+            };
+            propertiesElement.innerHTML += `<p class="centered">${days} day${moreDays}</p>`;
+        };
 
         if (timeDifference <= 0) {
             clearInterval(x);
