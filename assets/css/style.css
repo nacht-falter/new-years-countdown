@@ -334,7 +334,6 @@ svg {
   box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
   border-style: ridge;
   max-height: 50vh;
-  max-width: 33vw;
   margin: 5% auto;
   overflow-y: auto;
   padding: 1%;
