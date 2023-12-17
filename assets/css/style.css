@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
 :root {
-  --color-white: #d4af37;
+  --color-white: #b8860b;
   --color-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
@@ -27,7 +27,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #d4af37;
+  color: #b8860b;
 }
 
 .heading {
@@ -143,8 +143,8 @@ svg {
 }
 
 .time-zone-list button:hover {
-  background-color: #d4af37;
-  border-color: #d4af37;
+  background-color: #b8860b;
+  border-color: #b8860b;
 }
 
 .container {
@@ -176,26 +176,8 @@ svg {
   animation-play-state: running;
 }
 
-@keyframes snowflakes-fall {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(110vh);
-  }
-}
-
-@keyframes snowflakes-shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  50% {
-    transform: translateX(80px);
-  }
-}
+@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}
+@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}
 
 .snowflake {
   position: fixed;
@@ -312,8 +294,9 @@ svg {
 }
 
 .to-do-container {
-  border: 5px solid #d4af37;
+  border: 10px solid #b8860b;
   box-shadow: 2px 9px 20px rgba(0, 0, 0, 0.8);
+  border-style: ridge;
   max-height: 50vh;
   max-width: 33vw;
   margin: 5% auto;
@@ -333,7 +316,7 @@ svg {
 }
 
 .list-button {
-  background-color: #d4af37;
+  background-color: #b8860b;
   color: #252525;
   padding: 6px 8px;
   border: none;
@@ -366,7 +349,31 @@ li {
 }
 
 .remove-task-btn:hover {
-  background-color: #d4af37;
+  background-color: #b8860b;
+}
+
+/* For WebKit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 6px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #252525; /* color of the scrollbar thumb */
+  border-radius: 4px; /* rounded corners of the scrollbar thumb */
+}
+
+.remove-task-btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+.remove-task-btn:hover {
+  background-color: #b8860b;
 }
 
 /* For WebKit browsers (e.g., Chrome, Safari) */
