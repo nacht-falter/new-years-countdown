@@ -330,6 +330,10 @@ svg {
   margin: 8px 0;
 }
 
+label {
+  padding-left: 2%;
+}
+
 .list-button {
   background-color: #b8860b;
   color: #252525;
