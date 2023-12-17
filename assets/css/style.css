@@ -35,6 +35,21 @@ a:hover {
   margin-top: 50px;
 }
 
+.p-4 {
+  background-image: linear-gradient(to right, #E91E63, #673AB7);
+  border-bottom-color: #b8860b;
+  border-bottom-style: ridge;
+  border-bottom-width: 10px;
+  padding: 0.7rem!important;
+}
+
+.p-2 {
+  background-image: linear-gradient(to right, #E91E63, #673AB7);
+  border-top-color: #b8860b;
+  border-top: 10px;
+  border-top-style: ridge;
+}
+
 .heading h1 {
   text-shadow: var(--color-shadow);
   color: var(--color-white);
