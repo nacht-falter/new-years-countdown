@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+#map {
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+h4,
+p {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    color: #000fff;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 1px white;
+}
+
+.marker-2024 {
+    background-image: url(../images/fireworks_2024_bis.gif);
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.centered {
+    text-align: center;
+}
