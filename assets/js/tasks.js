@@ -33,7 +33,7 @@ function displayTasks() {
   // Display each task with a removal option
   tasks.forEach((task, index) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<span>${task}</span><button class="remove-task-btn" onclick="removeTask(${index})">&#10006;</button>`;
+    listItem.innerHTML = `<span>${task}</span><button class="remove-task-btn" onclick="removeTask(${index})">❌</button>`;
     taskList.appendChild(listItem);
   });
 }
