@@ -12,7 +12,6 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/fireworks-animation.css">
-
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- jquery ui styles -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -21,14 +20,11 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/2be66b3e41.js" crossorigin="anonymous"></script>
-
-
 </head>
 
-<body class="bg-dark text-light">
+<body class="text-light">
     <header>
         <nav class="p-4">
-            <!-- TODO: Add a logo -->
             <ul class="nav justify-content-end">
                 <li class="me-2">
                     <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -36,7 +32,6 @@
                 <li>
                     <a class="me-2" href="map.html"><i class="fas fa-map"></i> Map</a>
                 </li>
-                <!-- <li><a class="video-panel-btn me-3" href="#">Video call</a></li> -->
                 <li>
                     <a class="me-2" href="list.html" aria-label="Takes to To-Do List">
                         <i class="fas fa-list"></i> To-Do List</a>
@@ -47,15 +42,7 @@
 
     <main>
         <div class="heading">
-            <!-- <div class="draggable video-panel d-none"> -->
-            <!--     <div class="drag-icon"><i class="fa-solid fa-bars"></i></div> -->
-            <!---->
-            <!--     <iframe src="https://group-chat.whereby.com/group-chat39e45e80-9a8f-48c6-8926-3c61a80306f9" -->
-            <!--         allow="camera; microphone; fullscreen; speaker; display-capture; compute-pressure" -->
-            <!--         style="height: 700px; width: 100%" aria-label="group-chat"> -->
-            <!--     </iframe> -->
-            <!-- </div> -->
-            <h1>Loading 2024...</h1>
+            <h1><a href="index.html">Loading 2024 ...</a></h1>
             <div class="snowflakes" aria-hidden="true">
                 <div class="snowflake">
                     <div class="inner">❅</div>
@@ -100,6 +87,10 @@
             <div class="before"></div>
             <div class="after"></div>
         </div>
+
+        <!-- Container for task notification -->
+        <div id="alertContainer" class="position-fixed top-0 end-0 p-3 mt-5" style="z-index: 5"></div>
+
         <div class="container pt-5 d-flex align-items-center justify-content-center text-center">
             <div id="timers-container" class="row flex-column flex-xl-row">
                 <div class="col" id="timer-container-1">
@@ -141,15 +132,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="col justify-content-center align-items-center d-flex mt-5 ms-0 ms-xl-3 mt-xl-0">
+                    <button class="btn btn-outline-warning btn" title="Add timer" id="add-timer-btn"><i class="fas fa-plus fs-1"></i></button>
+                </div>
             </div>
-            <button class="btn btn-warning btn-sm mt-5" id="add-timer-btn">Add Timer</button>
             <button class="btn btn-warning btn-sm mt-5" id="simulate-btn">Simulate countdown</button>
 
             <!-- div for showing a list of timezones populated wit js-->
             <div class="time-zone-list d-none">
+
+                <p>Please select a timezone</p>
                 <ul></ul>
             </div>
         </div>
+
     </main>
 
     <footer class="fixed-bottom p-2 mt-5">
