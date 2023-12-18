@@ -90,4 +90,4 @@ The following technologies have been used in the project:
   - [Yannick Ferenczi](https://github.com/yannickferenczi)
   - [Jamie O'Neill](https://github.com/jamie33o)
   - [Viola Bergere](https://github.com/violaberg)
-  - [Vasilica Pavaloi](https://github.com/Vasi012)
+  - [Vasilica Pavaloi](https://github.com/Vasi012) (Team Facilitator)
