@@ -1,12 +1,16 @@
 // Create the map
+// get screen width
+const screenWidth = window.innerWidth;
+const zoom = screenWidth < 1000 ? 1 : screenWidth < 1500 ? 1.5 : 2;
+
 mapboxgl.accessToken = "pk.eyJ1IjoieWFubmlja2ZlcmVuY3ppIiwiYSI6ImNscTVkaHZtajBoenIybW52cWt2ODVhZjgifQ.BobuT_4StjW8vzWSJ7TevA"
 const map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/yannickferenczi/clq6eztad001001pka7aa4274",
-    zoom: 1.5,
+    zoom: zoom,
     minZoom: 1.5,
     maxZoom: 4,
-    center: [8, 9],
+    center: [0, 0],
 });
 
 const geojson = {
