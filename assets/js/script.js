@@ -45,6 +45,12 @@ class countdownTimer {
     }
     this.timeTillNewYears = distance;
     this.finalCountdownAnimation();
+    const addTimerBtn = document.getElementById("add-timer-btn");
+    const daysTimer = document.getElementById(`days-timer-${this.timerId}`);
+    const hoursTimer = document.getElementById(`hours-timer-${this.timerId}`);
+    const minutesTimer = document.getElementById(`minutes-timer-${this.timerId}`);
+    const secondsTimer = document.getElementById(`seconds-timer-${this.timerId}`);
+    const timerOffset = document.getElementById("timer-offset");
 
     if (distance > 0) {
       // calculate time units
@@ -54,18 +60,19 @@ class countdownTimer {
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       if (!this.finalCountdown) {
-        document.getElementById(`days-timer-${this.timerId}`).innerHTML = days + "d ";
-        document.getElementById(`hours-timer-${this.timerId}`).innerHTML = hours + "h ";
-        document.getElementById(`minutes-timer-${this.timerId}`).innerHTML = minutes + "m ";
-        document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds + "s ";
+        daysTimer.innerHTML = days + "d ";
+        hoursTimer.innerHTML = hours + "h ";
+        minutesTimer.innerHTML = minutes + "m ";
+        secondsTimer.innerHTML = seconds + "s ";
       } else {
         this.timezoneElement.classList.add("d-none");
-        document.getElementById("add-timer-btn").parentElement.classList.add("d-none");
-        document.getElementById(`days-timer-${this.timerId}`).classList.add("d-none");
-        document.getElementById(`hours-timer-${this.timerId}`).classList.add("d-none");
-        document.getElementById(`minutes-timer-${this.timerId}`).classList.add("d-none");
-        document.getElementById(`seconds-timer-${this.timerId}`).classList.add("final-countdown-text");
-        document.getElementById(`timer-container-${this.timerId}`).classList.add("final-countdown-timer");
+        document.getElementById("add-timer-btn").parentElement.classList.add("invisible");
+        document.getElementById("timer-offset").parentElement.classList.add("invisible");
+        daysTimer.classList.add("d-none");
+        hoursTimer.classList.add("d-none");
+        minutesTimer.classList.add("d-none");
+        secondsTimer.classList.add("final-countdown-text");
+        this.timerContainer.classList.add("final-countdown-timer");
         document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds;
         this.simulatedCountdownValue -= 1000;
       }
@@ -75,9 +82,11 @@ class countdownTimer {
       const formattedDateTime = `Local Time: ${timeInZone.toFormat("D")}, ${timeInZone.toFormat("HH:mm:ss")}`;
       $(`.cur-time-${this.timerId}`).html(formattedDateTime);
     } else {
-      document.getElementById(`timer-container-${this.timerId}`).innerHTML = "Happy new year!";
-      document.getElementById(`timer-container-${this.timerId}`).classList.remove("final-countdown-timer");
-      document.getElementById(`timer-container-${this.timerId}`).classList.add("happy");
+      addTimerBtn.parentElement.classList.add("d-xl-none");
+      timerOffset.parentElement.classList.add("d-xl-none");
+      this.timerContainer.innerHTML = "Happy New Year!";
+      this.timerContainer.classList.remove("final-countdown-timer");
+      this.timerContainer.classList.add("happy");
       //show the fireworks when its new years
       $(".pyro").removeClass("d-none");
     }
@@ -177,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(`timer-container-${timer_count}`).classList.remove("d-none");
     if (timer_count === 3) {
       addTimerBtn.classList.add("d-none");
+      document.getElementById("timer-offset").classList.add("d-none");
     }
 
     const removeTimerHandler = () => {

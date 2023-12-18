@@ -162,6 +162,10 @@ svg {
   background-color: #110530;
 }
 
+#timer-offset {
+  width: 61px;
+}
+
 #timezone-timer-1,
 #timezone-timer-2,
 #timezone-timer-3 {
