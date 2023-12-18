@@ -16,7 +16,7 @@ const playerImage = new Image();
 
 // Create a new image object for the obstacle
 const objectImage = new Image();
-objectImage.src = "assets/images/santa-sprites/gift.png";
+objectImage.src = "../images/santa-sprites/gift.png";
 
 // Simple state management function
 function createState(initialState, spriteCount) {
@@ -64,7 +64,7 @@ function animateImage(imageElement, basePath, frameDuration) {
 }
 
 // Example usage of animateImage
-animateImage(playerImage, "assets/images/santa-sprites", 30);
+animateImage(playerImage, "../images/santa-sprites", 30);
 
 // Player object
 const player = {
