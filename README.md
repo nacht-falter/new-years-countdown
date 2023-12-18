@@ -77,6 +77,7 @@ The following technologies have been used in the project:
 - [Git](https://git-scm.com/) - Version control
 - [GitHub](https://github.com) - Version control and deployment
 - [Faviconer](http://www.faviconer.com/) - Favicon
+- [Avatars](https://openart.ai/) - Creaction with AI our Team Avatar's
 
 ## **Credits**
 - [PavelTheCoder](https://pajasevi.github.io/CSSnowflakes/) - Snowflake effect
