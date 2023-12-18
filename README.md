@@ -2,7 +2,7 @@
 
 <h1 align="center"><strong>Loading 2024 ...</strong></h1>
 
-![Happy New Year](assets/images/happy-new-year-progress-bar.jpg)
+![Happy New Year](assets/images/home-page.png)
 
 ## **Intro**
 Welcome to ***Loading 2024 ...*** - your go-to destination for ringing in the new year with style and excitement! As the clock ticks down to midnight, join us on a virtual journey filled with anticipation, joy, and the thrill of a fresh start. Our app is designed to make your New Year's Eve memorable, providing real-time countdowns, vibrant visuals, and a festive atmosphere that will get you in the celebratory spirit.
@@ -77,9 +77,11 @@ The following technologies have been used in the project:
 - [Git](https://git-scm.com/) - Version control
 - [GitHub](https://github.com) - Version control and deployment
 - [Faviconer](http://www.faviconer.com/) - Favicon
+- [Openart.ai](https://openart.ai/) - Team Avatars
 
 ## **Credits**
 - [PavelTheCoder](https://pajasevi.github.io/CSSnowflakes/) - Snowflake effect
+- [Eddie Lin](https://jsfiddle.net/elin/7m3bL/) - Fireworks effect
 
 - Credits and thank you to our team ***Jingle Squad*** for great teamwork during the project and effective communication via our Slack channel chat and calls:
   - [Johannes Bernet](https://github.com/nacht-falter)
