@@ -19,7 +19,8 @@ body {
   min-height: 100vh;
 }
 
-main {
+main,
+section {
   margin-bottom: 120px;
 }
 
@@ -30,7 +31,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  color: #b8860b;
+  color: #ffe34e;
 }
 
 .heading {
@@ -147,6 +148,7 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #110530;
 }
 
 #timezone-timer-1,
@@ -221,7 +223,6 @@ svg {
 }
 
 @keyframes snowflakes-shake {
-
   0%,
   100% {
     transform: translateX(0);
@@ -456,4 +457,31 @@ li {
   .countdown-container {
     font-size: 20px;
   }
+}
+
+.final-countdown-text {
+  font-size: 5em;
+}
+
+.final-countdown-timer {
+  transition: 2s all;
+  transform: scale(2);
+  margin: 0 auto;
+  z-index: 100;
+  align-items: center;
+  display: flex;
+}
+
+@media (max-width: 576px) {
+  .final-countdown-text { 
+    font-size: 3em;
+  }
+  .final-countdown-timer {
+    transform: scale(1);
+  }
+}
+
+.happy {
+  font-size: 5em;
+  min-height: 300px;
 }

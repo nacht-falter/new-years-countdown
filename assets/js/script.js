@@ -9,12 +9,16 @@ class countdownTimer {
     // Luxon is a JavaScript library for working with dates and times
     this.luxonTime = luxon.DateTime;
     this.timeZoneName = timeZoneName ? timeZoneName : this.luxonTime.local().zoneName;
+    this.timezoneElement = document.getElementById(`timezone-timer-${this.timerId}`);
     this.timeTillNewYears = null;
     this.updateCountdown();
-    this.restartAnimation(this.timerId);
+    this.restartCircleAnimation(this.timerId);
+    this.finalCountdown = false;
+    this.simulatedCountdown = false;
+    this.simulatedCountdownValue = 10000;
   }
 
-  updateCountdown(simulateCountdown) {
+  updateCountdown() {
     // calculate the distance between new years eve in the selected timezone and the users local time
     const userTime = this.luxonTime.local();
     const timeInZone = this.luxonTime.local().setZone(this.timeZoneName);
@@ -25,22 +29,23 @@ class countdownTimer {
     const newYearsEve = this.luxonTime.fromObject(
       {
         year: currentYear + 1,
-        month: 1, // December
-        day: 1, // 31st
-        hour: 0, // 11 PM (New Year's Eve)
-        minute: 0, // 59 minutes
-        second: 0, // 59 seconds
+        month: 1,
+        day: 1,
+        hour: 0,
+        minute: 0,
+        second: 0,
       },
       { zone: this.timeZoneName }
     );
     // get the distance between the users local time and new years eve in the selected timezone
     let distance;
-    if (!simulateCountdown && simulateCountdown != 0) {
-      distance = newYearsEve.diff(timeInZone).as("milliseconds");
+    if (this.simulatedCountdown) {
+      distance = this.simulatedCountdownValue;
     } else {
-      distance = simulateCountdown * 1000;
+      distance = newYearsEve.diff(timeInZone).as("milliseconds");
     }
     this.timeTillNewYears = distance;
+    this.finalCountdownAnimation();
 
     if (distance > 0) {
       // calculate time units
@@ -49,18 +54,30 @@ class countdownTimer {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById(`days-timer-${this.timerId}`).innerHTML = days + "d ";
-      document.getElementById(`hours-timer-${this.timerId}`).innerHTML = hours + "h ";
-      document.getElementById(`minutes-timer-${this.timerId}`).innerHTML = minutes + "m ";
-      document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds + "s ";
+      if (!this.finalCountdown) {
+        document.getElementById(`days-timer-${this.timerId}`).innerHTML = days + "d ";
+        document.getElementById(`hours-timer-${this.timerId}`).innerHTML = hours + "h ";
+        document.getElementById(`minutes-timer-${this.timerId}`).innerHTML = minutes + "m ";
+        document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds + "s ";
+      } else {
+        this.timezoneElement.classList.add("d-none");
+        document.getElementById(`days-timer-${this.timerId}`).classList.add("d-none");
+        document.getElementById(`hours-timer-${this.timerId}`).classList.add("d-none");
+        document.getElementById(`minutes-timer-${this.timerId}`).classList.add("d-none");
+        document.getElementById(`seconds-timer-${this.timerId}`).classList.add("final-countdown-text");
+        document.getElementById(`timer-container-${this.timerId}`).classList.add("final-countdown-timer");
+        document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds;
+        this.simulatedCountdownValue -= 1000;
+      }
 
-      const timezoneElement = document.getElementById(`timezone-timer-${this.timerId}`);
-      timezoneElement.textContent = `Time zone: ${this.timeZoneName}`;
+      this.timezoneElement.textContent = `Time zone: ${this.timeZoneName}`;
 
       const formattedDateTime = `Local Time: ${timeInZone.toFormat("D")}, ${timeInZone.toFormat("HH:mm:ss")}`;
       $(`.cur-time-${this.timerId}`).html(formattedDateTime);
     } else {
       document.getElementById(`timer-container-${this.timerId}`).innerHTML = "Happy new year!";
+      document.getElementById(`timer-container-${this.timerId}`).classList.remove("final-countdown-timer");
+      document.getElementById(`timer-container-${this.timerId}`).classList.add("happy")
       //show the fireworks when its new years
       $(".pyro").removeClass("d-none");
     }
@@ -73,7 +90,7 @@ class countdownTimer {
   /**
    * This function is for the timer circle animation
    */
-  restartAnimation(timerId) {
+  restartCircleAnimation(timerId) {
     const svgContainer = $(`.timer-${timerId}`);
     svgContainer.prepend(`
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -90,7 +107,7 @@ class countdownTimer {
 
     let self = this;
 
-    function updateAnimation() {
+    function updateCircleAnimation() {
       const totalDashes = 910; // Total number of dashes in the circle
       const millisecondsInYear = 31536000000; // Number of milliseconds in a year
 
@@ -105,17 +122,23 @@ class countdownTimer {
       // -910 is the circle completely gone so add the dashesRemaining to -910
       element.style.strokeDashoffset = -dashesRemaining;
 
-      requestAnimationFrame(updateAnimation);
+      requestAnimationFrame(updateCircleAnimation);
     }
 
-    updateAnimation();
+    updateCircleAnimation();
+  }
+
+  finalCountdownAnimation() {
+    // check if time to new years is less than 10 seconds
+    if (this.timeTillNewYears <= 10000) {
+      this.finalCountdown = true;
+    }
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   let timer_count = 1;
   const timers = [];
-  let simulateCountdown = null;
 
   const initialTimer = new countdownTimer(timer_count);
 
@@ -128,17 +151,21 @@ document.addEventListener("DOMContentLoaded", () => {
     showTimeZoneList();
   });
   // btn listener for simulating the countdown
-  $("#simulate-btn").on("click", function () {
+  $("#simulate-btn").on("click", function() {
     if ($(this).text() === "Close simulator") {
       location.reload();
     } else {
-      simulateCountdown = 10;
+      timers[0].simulatedCountdown = true;
+      if (timers.length > 1) {
+        timers[1].hideTimer();
+        timers[2].hideTimer();
+      }
       $(this).text("Close simulator");
     }
   });
 
   // listener for timezones list
-  $(document).on("click", ".tz-name", function () {
+  $(document).on("click", ".tz-name", function() {
     // hide the timezone list and start the timer
     $(".time-zone-list").toggleClass("d-none");
     timer_count++;
@@ -168,10 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set interval on the global scope so it can be cleared later
   setInterval(() => {
     timers.forEach((timer) => {
-      timer.updateCountdown(simulateCountdown);
-      if (simulateCountdown) {
-        simulateCountdown--;
-      }
+      timer.updateCountdown();
     });
   }, 1000);
 });
@@ -183,9 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function showTimeZoneList() {
   $(".time-zone-list").toggleClass("d-none");
   if ($(".tz-name").length < 1) {
-    $.getJSON("timezone-names.json", function (data) {
+    $.getJSON("timezone-names.json", function(data) {
       // Process the JSON data
-      $.each(data, function (index, item) {
+      $.each(data, function(index, item) {
         $(".time-zone-list ul").append(`<li><button class="tz-name btn btn-info"> ${item}</button></li>`);
       });
     });
