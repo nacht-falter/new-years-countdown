@@ -27,6 +27,7 @@ section {
 a {
   color: #0dcaf0;
   text-decoration: none;
+  transition: all 0.2s;
 }
 
 a:hover {
@@ -36,6 +37,16 @@ a:hover {
 
 .heading {
   text-align: center;
+}
+
+.heading a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.heading a:hover {
+  color: #0dcaf0;
+  text-decoration: none;
 }
 
 .p-4 {
