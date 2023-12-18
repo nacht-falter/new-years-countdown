@@ -55,7 +55,7 @@ function animateImage(imageElement, basePath, frameDuration) {
         if (currentFrame > counterState.getSpriteCount()) {
             currentFrame = 1;
         }
-        imageElement.src = `${basePath}/${counterState.getState()} (${currentFrame}).png`;
+        imageElement.src = `${basePath}/${counterState.getState()}${currentFrame}.png`;
         currentFrame++;
     }
 
