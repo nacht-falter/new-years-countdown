@@ -35,12 +35,12 @@ class countdownTimer {
     );
     // get the distance between the users local time and new years eve in the selected timezone
     let distance;
-    if(!simulateCountdown && simulateCountdown != 0){
+    if (!simulateCountdown && simulateCountdown != 0) {
       distance = newYearsEve.diff(timeInZone).as("milliseconds");
-    }else{
+    } else {
       distance = simulateCountdown * 1000;
     }
-    this.timeTillNewYears = distance
+    this.timeTillNewYears = distance;
 
     if (distance > 0) {
       // calculate time units
@@ -62,7 +62,7 @@ class countdownTimer {
     } else {
       document.getElementById(`timer-container-${this.timerId}`).innerHTML = "Happy new year!";
       //show the fireworks when its new years
-      $('.pyro').removeClass('d-none')
+      $(".pyro").removeClass("d-none");
     }
   }
 
@@ -85,29 +85,29 @@ class countdownTimer {
         </defs>
         <circle class="circle-${timerId}" cx="140" cy="160" r="145"/>
     </svg>`);
-  
+
     const element = document.querySelector(`.circle-${timerId}`);
 
-    let self = this
-  
+    let self = this;
+
     function updateAnimation() {
-      const totalDashes = 910;  // Total number of dashes in the circle
-      const millisecondsInYear = 31536000000;  // Number of milliseconds in a year
+      const totalDashes = 910; // Total number of dashes in the circle
+      const millisecondsInYear = 31536000000; // Number of milliseconds in a year
 
       // Get the remaining time in milliseconds 15768000000 86400000
       const timeLeftInYear = self.timeTillNewYears;
-    
+
       // Calculate the percentage of the year that has passed
       const percentageYearPassed = (millisecondsInYear - timeLeftInYear) / millisecondsInYear;
-      
+
       // Calculate the number of dashes remaining based on the percentage
-      const dashesRemaining = Math.floor(totalDashes * (1 - percentageYearPassed));     
-      // -910 is the circle completely gone so add the dashesRemaining to -910 
-      element.style.strokeDashoffset = -dashesRemaining ;
-  
+      const dashesRemaining = Math.floor(totalDashes * (1 - percentageYearPassed));
+      // -910 is the circle completely gone so add the dashesRemaining to -910
+      element.style.strokeDashoffset = -dashesRemaining;
+
       requestAnimationFrame(updateAnimation);
     }
-  
+
     updateAnimation();
   }
 }
@@ -128,17 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
     showTimeZoneList();
   });
   // btn listener for simulating the countdown
-  $('#simulate-btn').on('click', function() {
-    if($(this).text() === 'Close simulator'){
-      location.reload()
-    }else{
-      simulateCountdown = 10
-      $(this).text('Close simulator')
+  $("#simulate-btn").on("click", function () {
+    if ($(this).text() === "Close simulator") {
+      location.reload();
+    } else {
+      simulateCountdown = 10;
+      $(this).text("Close simulator");
     }
-  })
+  });
 
   // listener for timezones list
-  $(document).on("click", ".tz-name", function() {
+  $(document).on("click", ".tz-name", function () {
     // hide the timezone list and start the timer
     $(".time-zone-list").toggleClass("d-none");
     timer_count++;
@@ -168,10 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set interval on the global scope so it can be cleared later
   setInterval(() => {
     timers.forEach((timer) => {
-        timer.updateCountdown(simulateCountdown);
-        if(simulateCountdown){
-          simulateCountdown--
-        }
+      timer.updateCountdown(simulateCountdown);
+      if (simulateCountdown) {
+        simulateCountdown--;
+      }
     });
   }, 1000);
 });
@@ -183,11 +183,37 @@ document.addEventListener("DOMContentLoaded", () => {
 function showTimeZoneList() {
   $(".time-zone-list").toggleClass("d-none");
   if ($(".tz-name").length < 1) {
-    $.getJSON("timezone-names.json", function(data) {
+    $.getJSON("timezone-names.json", function (data) {
       // Process the JSON data
-      $.each(data, function(index, item) {
+      $.each(data, function (index, item) {
         $(".time-zone-list ul").append(`<li><button class="tz-name btn btn-info"> ${item}</button></li>`);
       });
     });
   }
 }
+
+// This displays a notification on the startpage if there are uncompleted tasks
+function fetchUncompletedTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  return tasks.some((task) => !task.completed);
+}
+
+function showNotificationIfTasksExist() {
+  const alertContainer = document.getElementById("alertContainer");
+  alertContainer.innerHTML = "";
+
+  if (fetchUncompletedTasks()) {
+    const alert = document.createElement("div");
+    alert.classList.add("alert", "alert-info", "alert-dismissible", "fade", "show");
+    alert.setAttribute("role", "alert");
+
+    alert.innerHTML = `
+        You have <a href="list.html" title="To-Do List">uncompleted tasks</a> in your To-Do list!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+
+    alertContainer.appendChild(alert);
+  }
+}
+
+showNotificationIfTasksExist();
