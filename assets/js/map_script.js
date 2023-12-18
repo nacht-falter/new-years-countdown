@@ -1,7 +1,7 @@
 // Create the map
 // get screen width
 const screenWidth = window.innerWidth;
-const zoom = screenWidth < 1000 ? 1 : screenWidth < 1500 ? 1.5 : 2;
+const zoom = screenWidth < 1500 ? 2 : 2.3;
 
 mapboxgl.accessToken = "pk.eyJ1IjoieWFubmlja2ZlcmVuY3ppIiwiYSI6ImNscTVkaHZtajBoenIybW52cWt2ODVhZjgifQ.BobuT_4StjW8vzWSJ7TevA"
 const map = new mapboxgl.Map({
