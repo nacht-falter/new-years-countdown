@@ -77,10 +77,11 @@ The following technologies have been used in the project:
 - [Git](https://git-scm.com/) - Version control
 - [GitHub](https://github.com) - Version control and deployment
 - [Faviconer](http://www.faviconer.com/) - Favicon
-- [Avatars](https://openart.ai/) - Creaction with AI our Team Avatar's
+- [Openart.ai](https://openart.ai/) - Team Avatars
 
 ## **Credits**
 - [PavelTheCoder](https://pajasevi.github.io/CSSnowflakes/) - Snowflake effect
+- [Eddie Lin](https://jsfiddle.net/elin/7m3bL/) - Fireworks effect
 
 - Credits and thank you to our team ***Jingle Squad*** for great teamwork during the project and effective communication via our Slack channel chat and calls:
   - [Johannes Bernet](https://github.com/nacht-falter)
