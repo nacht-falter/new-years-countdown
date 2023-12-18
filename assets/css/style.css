@@ -60,7 +60,7 @@ a:hover {
 .p-2 {
   background-image: linear-gradient(to right, #e91e63, #673ab7);
   border-top-color: #b8860b;
-  border-top: 10px;
+  border-top-width: 10px;
   border-top-style: ridge;
 }
 
