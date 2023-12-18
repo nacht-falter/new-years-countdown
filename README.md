@@ -2,7 +2,7 @@
 
 <h1 align="center"><strong>Loading 2024 ...</strong></h1>
 
-![Happy New Year](assets/images/happy-new-year-progress-bar.jpg)
+![Happy New Year](assets/images/home-page.png)
 
 ## **Intro**
 Welcome to ***Loading 2024 ...*** - your go-to destination for ringing in the new year with style and excitement! As the clock ticks down to midnight, join us on a virtual journey filled with anticipation, joy, and the thrill of a fresh start. Our app is designed to make your New Year's Eve memorable, providing real-time countdowns, vibrant visuals, and a festive atmosphere that will get you in the celebratory spirit.
