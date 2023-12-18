@@ -27,15 +27,26 @@ section {
 a {
   color: #0dcaf0;
   text-decoration: none;
+  transition: all 0.2s;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #ffe34e;
 }
 
 .heading {
   text-align: center;
+}
+
+.heading a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.heading a:hover {
+  color: #0dcaf0;
+  text-decoration: none;
 }
 
 .p-4 {
@@ -198,7 +209,7 @@ svg {
 
 .countdown-item {
   text-align: center;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 /*Snowflake styling */
