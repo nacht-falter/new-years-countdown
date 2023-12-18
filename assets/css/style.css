@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #ffe34e;
 }
 
@@ -209,7 +209,7 @@ svg {
 
 .countdown-item {
   text-align: center;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 /*Snowflake styling */

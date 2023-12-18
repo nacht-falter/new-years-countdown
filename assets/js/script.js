@@ -1,4 +1,3 @@
-
 /*
  * Class for countdown timer
  */
@@ -61,6 +60,7 @@ class countdownTimer {
         document.getElementById(`seconds-timer-${this.timerId}`).innerHTML = seconds + "s ";
       } else {
         this.timezoneElement.classList.add("d-none");
+        document.getElementById("add-timer-btn").parentElement.classList.add("d-none");
         document.getElementById(`days-timer-${this.timerId}`).classList.add("d-none");
         document.getElementById(`hours-timer-${this.timerId}`).classList.add("d-none");
         document.getElementById(`minutes-timer-${this.timerId}`).classList.add("d-none");
@@ -77,7 +77,7 @@ class countdownTimer {
     } else {
       document.getElementById(`timer-container-${this.timerId}`).innerHTML = "Happy new year!";
       document.getElementById(`timer-container-${this.timerId}`).classList.remove("final-countdown-timer");
-      document.getElementById(`timer-container-${this.timerId}`).classList.add("happy")
+      document.getElementById(`timer-container-${this.timerId}`).classList.add("happy");
       //show the fireworks when its new years
       $(".pyro").removeClass("d-none");
     }
